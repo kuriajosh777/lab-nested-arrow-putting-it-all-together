@@ -23,6 +23,11 @@ const loginAttempt = (passwordAttempt) => {
     // Wrong password, still within the allowed attempts
     return `Attempt ${attemptCount}: Login failed`;
   };
+    // Error handling (attempts): anything that isn't a string (undefined,
+    // null, numbers, etc.) is treated as a failed login instead of crashing
+    if (typeof passwordAttempt !== "string") {
+      return `Attempt ${attemptCount}: Login failed`;
+    }
  
   return loginAttempt;
 }
